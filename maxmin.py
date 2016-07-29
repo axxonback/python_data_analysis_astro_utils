@@ -1,9 +1,7 @@
 import numpy as np
-from numba import jit
 import argparse
 
 
-@jit(cache=True)
 def maxmin(initial,final,basename,sk,res):
     maxdens,mindens=0,0
     for i in range(initial,final+1):
@@ -17,8 +15,8 @@ def maxmin(initial,final,basename,sk,res):
             mindens=mindens_temp
         else:
             if mindens_temp<mindens:
-                mindens_temp=mindens
-            if maxdens>maxdens_temp:
+                mindens=mindens_temp
+            if maxdens_temp>maxdens:
                 maxdens=maxdens_temp
 
     return (maxdens,mindens)
